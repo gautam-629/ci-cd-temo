@@ -1,0 +1,49 @@
+# Dependency directories
+node_modules/
+
+# Build output directories
+dist/
+build/
+out/
+
+# Coverage reports
+coverage/
+
+# Environment files
+.env
+.env.local
+.env.development
+.env.production
+
+# Backup and temporary files
+*.bak
+*.tmp
+*.swp
+
+# Specific file types to ignore
+*.min.js
+*.min.css
+
+# Specific files or directories
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Framework and platform specific
+.next/
+.nuxt/
+.svelte-kit/
+.vercel/
+.netlify/
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*
+
+# IDE and editor directories
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
