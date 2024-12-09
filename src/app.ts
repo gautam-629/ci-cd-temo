@@ -1,18 +1,16 @@
-import express, { NextFunction, Request, Response } from 'express';
-import createHttpError, { HttpError } from 'http-errors';
+import express, { Application, NextFunction, Request, Response } from 'express';
+import { HttpError } from 'http-errors';
 import logger from './config/logger';
+import userRouter from './routes/user';
 
-let app = express();
+const app = express();
 
-app.use('/', (req, res, next) => {
-  // const err=createHttpError(401,'Unauthorized')
-  next(createHttpError(401, 'Unauthorized hero'));
-  return;
-  // throw err;
+// Middleware for JSON parsing
+app.use(express.json());
+app.use('/', userRouter);
+app.use(express.urlencoded({ extended: false }));
 
-  res.send('Welcome to the Express app');
-});
-
+// Error handling middleware
 app.use((err: HttpError, req: Request, res: Response, next: NextFunction) => {
   logger.error(err.message);
   const statusCode = err.statusCode || 500;
@@ -28,4 +26,5 @@ app.use((err: HttpError, req: Request, res: Response, next: NextFunction) => {
   });
 });
 
+// Export the app
 export default app;
