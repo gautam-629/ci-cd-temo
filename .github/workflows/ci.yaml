@@ -34,7 +34,7 @@ jobs:
     needs: build-and-test
     runs-on: ubuntu-24.04
     env:
-      IMAGE_NAME: gautam629/mernstack_auth_service # codersgyan/mernstack_auth_service:build-2
+      IMAGE_NAME: gautam629/ci_cd_temo # codersgyan/mernstack_auth_service:build-2
       IMAGE_TAG: build-${{ github.run_number }}
     if: github.ref == 'refs/heads/main' && github.event_name == 'push'
     steps:
