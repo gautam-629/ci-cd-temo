@@ -27,3 +27,12 @@ npm run migration:run -- -d src/config/data-source.ts
 
 //generate migration
 npm run migration:generate -- src/migration/user-mig -d src/config/data-source.ts
+
+//supabase
+3r(Q?x,uR#@CQu%
+
+//solar cloud 
+04c73528e9266151ab8bd55745431324269987ef
+
+docker hub
+dckr_pat_V56DmSnFa_pr5m9ByHIWug9ELA4
