@@ -1,4 +1,5 @@
 name: CI
+
 on:
   pull_request:
     branches:
@@ -6,11 +7,11 @@ on:
   push:
     branches:
       - main
+
 jobs:
   build-and-test:
     name: Build the project
-    runs-on: ubuntu-24.04
-    # if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
       - name: Install dependencies
@@ -25,16 +26,15 @@ jobs:
           DB_USERNAME: ${{ secrets.TEST_DB_USERNAME }}
           DB_PASSWORD: ${{ secrets.TEST_DB_PASSWORD }}
           DB_NAME: ${{ secrets.TEST_DB_NAME }}
-
       - name: Build-ts
         run: npm run build
 
   build-and-push-docker:
     name: Build and Push Docker Image
     needs: build-and-test
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-latest
     env:
-      IMAGE_NAME: gautam629/ci_cd_temo # codersgyan/mernstack_auth_service:build-2
+      IMAGE_NAME: gautam629/ci_cd_temo
       IMAGE_TAG: build-${{ github.run_number }}
     if: github.ref == 'refs/heads/main' && github.event_name == 'push'
     steps:
