@@ -5,6 +5,9 @@ docker volume create mernpgdata
 //run container
 docker run --rm --name mernpg-container -e POSTGRES_USER=root -e POSTGRES_PASSWORD=root -v mernpgdata:/var/lib/postgresql/data -p 5432:5432 -d postgres
 
+//sites
+https://codersgyan.notion.site/Setting-up-PostgreSQL-in-a-Docker-Container-with-Persistent-Volume-58711388eb244c9fa1597d87783e3f92
+
 //express js 
 1.make images
 docker build -t auth-service:dev -f docker/development/Dockerfile .
@@ -17,3 +20,10 @@ docker run --rm -it \
   -p 5500:5500 \
   -e NODE_ENV=development \
   auth-service:dev
+
+
+// run migration
+npm run migration:run -- -d src/config/data-source.ts
+
+//generate migration
+npm run migration:generate -- src/migration/user-mig -d src/config/data-source.ts

@@ -1,16 +1,23 @@
+import 'reflect-metadata';
 import app from './app';
 import { Config } from './config';
+import { AppDataSource } from './config/data-source';
 import logger from './config/logger';
 
-const startServer = () => {
+const startServer = async () => {
+  const PORT = Config.PORT;
   try {
-    app.listen(Config.PORT, () => {
-      logger.info(`Server Running at port ${Config.PORT}`);
-    });
-  } catch (error) {
-    logger.error(error);
-    process.exit(1);
+    await AppDataSource.initialize();
+    logger.info('Database connected successfully.');
+    app.listen(PORT, () => logger.info(`Listening on port ${PORT}`));
+  } catch (err: unknown) {
+    if (err instanceof Error) {
+      logger.error(err.message);
+      setTimeout(() => {
+        process.exit(1);
+      }, 1000);
+    }
   }
 };
 
-startServer();
+void startServer();

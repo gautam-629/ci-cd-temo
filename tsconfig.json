@@ -1,14 +1,18 @@
 {
   "compilerOptions": {
-    "target": "es2022",
+    "target": "ESNext",
     "module": "commonjs",
     "outDir": "./dist",
-    "rootDir": "./src",
+    "lib": ["DOM","ES6","ES2017"],
+    "moduleResolution": "node",
     "strict": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true
+    "forceConsistentCasingInFileNames": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "strictPropertyInitialization": false
   },
-  "include": ["src/**/*", "eslint.config.mjs"],
+  "include": ["src"],
   "exclude": ["node_modules"]
 }
